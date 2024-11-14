@@ -6,17 +6,38 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 
 export default function Navbar() {
   const location = useLocation();
+  const [showNavbar, setShowNavbar] = useState(true);
+  let lastScrollY = window.scrollY;
 
-  const allowedPaths = ["/", "/page1", "/page2", "/page3", "/page4"];
+  // Navbar를 표시할 경로 목록
+  const allowedPaths = ["/", "/page1", "/page2", "/page3", "/page4", "/search"];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        // 아래로 스크롤하고 특정 위치 이상일 때 Navbar 숨김
+        setShowNavbar(false);
+      } else if (window.scrollY <= 100) {
+        // 페이지가 위로 스크롤되거나 특정 위치 이하일 때 Navbar 보임
+        setShowNavbar(true);
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // 현재 경로가 allowedPaths에 포함되지 않으면 null 반환
-  if (!allowedPaths.includes(location.pathname)) {
+  if (!allowedPaths.includes(location.pathname) || !showNavbar) {
     return null;
   }
 

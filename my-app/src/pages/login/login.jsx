@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './login.css';
 import logo from '../../assets/images/logo.png'; // 로고 이미지 경로
 
@@ -52,7 +52,7 @@ function LoginPage({ setIsAuthenticated }) {
                     />
                     <button onClick={handleLogin} className="login-button">Login</button>
                     <div className="links">
-                        <a href="/signup">회원가입</a>
+                        <Link to="/signup">회원가입</Link>
                         <a href="/find-account">아이디/비번 찾기</a>
                     </div>
                 </div>
