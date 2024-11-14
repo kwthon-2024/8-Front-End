@@ -1,0 +1,79 @@
+.signup-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: 'Arial, sans-serif';
+    color: #4a1533;
+    position: relative;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #4a1533;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .signup-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #4a1533;
+    padding-bottom: 8px;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px; /* 폼의 첫 입력란 위 공백 추가 */
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 8px 0;
+    margin: 8px 0;
+    border: none;
+    border-bottom: 1px solid #4a1533; /* 아래쪽에만 선을 추가 */
+    outline: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #4a1533;
+    border-radius: 0; /* 끝부분이 올라가지 않도록 */
+  }
+  
+  .input-field::placeholder {
+    color: #8a8a8a;
+  }
+  
+  .phone-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .verify-button {
+    padding: 8px 12px;
+    margin-left: 8px;
+    background-color: #4a1533;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    padding: 12px;
+    background-color: #4a1533;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 16px;
+  }

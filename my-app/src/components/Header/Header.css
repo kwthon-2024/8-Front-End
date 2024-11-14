@@ -1,0 +1,33 @@
+.header-container {
+  width: 100%;
+  background-color: #fff;
+  color: #4a1533;
+  font-family: 'Arial, sans-serif';
+  padding: 16px;
+  border-radius: 8px;
+  box-sizing: border-box; /* 전체 너비 포함 */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  width: 50px; /* 로고의 크기 조정 */
+  height: 50px; /* 로고의 크기 조정 */
+  margin-right: 16px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0; /* 제목의 마진 제거 */
+}
+
+.header-divider {
+  width: 100%;
+  border: none;
+  border-top: 2px solid #4a1533; /* 두께와 색상 */
+  margin-top: 8px; /* 제목과 선 사이의 간격 */
+}

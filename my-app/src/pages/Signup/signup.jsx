@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { IoIosArrowBack } from "react-icons/io"; // 아이콘 import
+import './signup.css'; // 스타일 파일 import
 
 function SignupForm() {
   const [formData, setFormData] = useState({
     studentId: '',
     name: '',
     phoneNumber: '',
+    verificationCode: '',
     department: '',
     age: '',
     email: ''
   });
+
+  const navigate = useNavigate(); // 페이지 이동을 위한 navigate 함수
 
   const handleChange = (e) => {
     setFormData({
@@ -27,6 +33,7 @@ function SignupForm() {
           studentId: '',
           name: '',
           phoneNumber: '',
+          verificationCode: '',
           department: '',
           age: '',
           email: ''
@@ -39,56 +46,88 @@ function SignupForm() {
   };
 
   return (
-    <div style={{ width: '300px', margin: '0 auto', fontFamily: 'Arial, sans-serif', color: '#4a1533' }}>
-      <h2 style={{ textAlign: 'center', fontSize: '18px', fontWeight: 'bold' }}>회원가입</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="signup-container">
+      {/* 뒤로 가기 버튼 */}
+      <button onClick={() => navigate(-1)} className="back-button">
+        <IoIosArrowBack size={24} /> {/* 아이콘 크기는 필요에 따라 조정 */}
+      </button>
+      <h2 className="signup-title">회원가입</h2>
+      <form onSubmit={handleSubmit} className="signup-form">
         <label>
-          학번
-          <input type="text" name="studentId" value={formData.studentId} onChange={handleChange} style={inputStyle} />
+          <input
+            type="text"
+            name="studentId"
+            placeholder="학번"
+            value={formData.studentId}
+            onChange={handleChange}
+            className="input-field"
+          />
         </label>
         <label>
-          이름
-          <input type="text" name="name" value={formData.name} onChange={handleChange} style={inputStyle} />
+          <input
+            type="text"
+            name="name"
+            placeholder="이름"
+            value={formData.name}
+            onChange={handleChange}
+            className="input-field"
+          />
+        </label>
+        <label className="phone-container">
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="전화번호"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            className="input-field"
+          />
+          <button type="button" className="verify-button">인증</button>
         </label>
         <label>
-          전화번호
-          <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} style={inputStyle} />
+          <input
+            type="text"
+            name="verificationCode"
+            placeholder="전화번호 인증 번호"
+            value={formData.verificationCode}
+            onChange={handleChange}
+            className="input-field"
+          />
         </label>
         <label>
-          학과
-          <input type="text" name="department" value={formData.department} onChange={handleChange} style={inputStyle} />
+          <input
+            type="text"
+            name="department"
+            placeholder="학과"
+            value={formData.department}
+            onChange={handleChange}
+            className="input-field"
+          />
         </label>
         <label>
-          나이
-          <input type="number" name="age" value={formData.age} onChange={handleChange} style={inputStyle} />
+          <input
+            type="number"
+            name="age"
+            placeholder="나이"
+            value={formData.age}
+            onChange={handleChange}
+            className="input-field"
+          />
         </label>
         <label>
-          이메일
-          <input type="email" name="email" value={formData.email} onChange={handleChange} style={inputStyle} />
+          <input
+            type="email"
+            name="email"
+            placeholder="이메일"
+            value={formData.email}
+            onChange={handleChange}
+            className="input-field"
+          />
         </label>
-        <button type="submit" style={submitButtonStyle}>회원가입</button>
+        <button type="submit" className="submit-button">회원가입</button>
       </form>
     </div>
   );
 }
-
-const inputStyle = {
-  width: '100%',
-  padding: '8px',
-  margin: '8px 0',
-  border: '1px solid #ccc',
-  borderRadius: '4px',
-};
-
-const submitButtonStyle = {
-  padding: '10px',
-  backgroundColor: '#4a1533',
-  color: '#fff',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-  fontWeight: 'bold',
-  marginTop: '16px',
-};
 
 export default SignupForm;
