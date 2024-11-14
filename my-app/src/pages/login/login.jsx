@@ -1,7 +1,7 @@
 // src/pages/Login/LoginPage.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './oginPage.scss';
+import './login.scss';
 
 function LoginPage({ setIsAuthenticated }) {
     const [studentId, setStudentId] = useState('');
