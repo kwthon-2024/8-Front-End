@@ -20,6 +20,8 @@ function LoginPage({ setIsAuthenticated }) {
     }, []);
 
     const handleLogin = async () => {
+        setIsAuthenticated(true); // 로그인 상태 설정
+        navigate('/'); // 메인 페이지로 이동
 
         if (studentId && password) {
             try {
@@ -32,7 +34,6 @@ function LoginPage({ setIsAuthenticated }) {
 
                 // 로그인 성공 시
                 if (response.status === 200) {
-                    localStorage.setItem("token", response.data);
                     setIsAuthenticated(true); // 로그인 상태 설정
                     navigate('/'); // 메인 페이지로 이동
                 }

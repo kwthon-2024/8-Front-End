@@ -4,7 +4,6 @@ import "./App.scss";
 
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-
 import MainPage from "./pages/Main/MainPage";
 import SportsPage from "./pages/sports/SportsPage";
 import Page1 from "./pages/Page1/Page1";
@@ -14,7 +13,10 @@ import Page4 from "./pages/Page4/Page4";
 import SearchPage from "./pages/Search/SearchPage";
 import LoginPage from "./pages/login/login";
 import SignupPage from "./pages/Signup/signup";
-import ClubRegistrationPage from "./pages/ClubRegistrationPage/ClubRegistrationPage"; // 동아리 등록 페이지 import
+import ClubRegistrationPage from "./pages/ClubRegistrationPage/ClubRegistrationPage";
+import ClubDetailPage from "./pages/ClubDetailPage/ClubDetailPage";
+import ChatPage from "./pages/chat/chat"; // ChatPage import
+import ClubR from './pages/ClubR/ClubR'; // ClubR 페이지 import
 
 const Layout = ({ isAuthenticated }) => (
   <div className="page">
@@ -42,6 +44,9 @@ function App() {
         <Route path="/page4" element={isAuthenticated ? <Page4 /> : <Navigate to="/pages/login/login" replace />} />
         <Route path="/search" element={isAuthenticated ? <SearchPage /> : <Navigate to="/pages/login/login" replace />} />
         <Route path="/club-registration" element={isAuthenticated ? <ClubRegistrationPage /> : <Navigate to="/pages/login/login" replace />} />
+        <Route path="/club/:id" element={isAuthenticated ? <ClubDetailPage /> : <Navigate to="/pages/login/login" replace />} />
+        <Route path="/club/:id/chat" element={isAuthenticated ? <ChatPage /> : <Navigate to="/pages/login/login" replace />} /> {/* ChatPage route */}
+        <Route path="/clubR/:id" element={isAuthenticated ? <ClubR /> : <Navigate to="/pages/login/login" replace />} /> {/* ClubR route */}
         <Route path="*" element={<Navigate to="/pages/login/login" replace />} />
       </Route>
     </Routes>
