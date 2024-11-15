@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowBack } from "react-icons/io"; // 뒤로가기 아이콘 import
 import { useNavigate } from 'react-router-dom';
 import './ClubR.scss';
@@ -8,6 +8,15 @@ import i2Image from '../../assets/images/i2.png'; // 활동 사진 2
 
 function ClubR() {
   const navigate = useNavigate();
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState('');
+
+  const handleReviewSubmit = () => {
+    if (newReview.trim()) {
+      setReviews([...reviews, newReview]);
+      setNewReview('');
+    }
+  };
 
   return (
     <div className="club-detail-container">
@@ -37,6 +46,26 @@ function ClubR() {
 
       <h2 className="section-title">타대학과 친선전 교류</h2>
       <img src={i2Image} alt="활동 사진 2" className="club-image" />
+
+      {/* 리뷰 섹션 */}
+      <div className="review-section">
+        <h2 className="section-title">리뷰</h2>
+        <ul className="review-list">
+          {reviews.map((review, index) => (
+            <li key={index} className="review-item">{review}</li>
+          ))}
+        </ul>
+        <div className="review-input-container">
+          <input
+            type="text"
+            placeholder="리뷰를 작성하세요..."
+            value={newReview}
+            onChange={(e) => setNewReview(e.target.value)}
+            className="review-input"
+          />
+          <button onClick={handleReviewSubmit} className="submit-review-button">등록</button>
+        </div>
+      </div>
 
       {/* 고정된 하단 버튼 */}
       <div className="fixed-footer">
