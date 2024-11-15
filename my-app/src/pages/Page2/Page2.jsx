@@ -29,7 +29,6 @@ function Page2() {
   return (
     <div className="page2-container">
       <div className="custom-header">
-        <img src={clubImage} alt="KW CLUB Logo" className="header-logo" />
         <h1>내가 소속된 동아리</h1>
       </div>
       <div className="club-list">

@@ -1,2 +1,61 @@
 .page3 {
 }
+.page3-container {
+    padding: 20px;
+    font-family: 'Arial, sans-serif';
+    color: #4a1533;
+  
+    .page-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+  
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  
+    .personal-info-section, .affiliated-clubs-section, .pending-approval-section {
+      margin-bottom: 20px;
+  
+      .personal-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+  
+        .personal-icon {
+          width: 50px;
+          height: 50px;
+        }
+  
+        .personal-details {
+          p {
+            margin: 0;
+            font-size: 16px;
+          }
+        }
+      }
+  
+      .club-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+  
+        .club-image {
+          width: 100%;
+          height: auto;
+          border-radius: 10px;
+          margin-bottom: 10px;
+        }
+  
+        .club-name {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+  }

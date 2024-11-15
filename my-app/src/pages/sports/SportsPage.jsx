@@ -34,7 +34,11 @@ function SportsPage() {
       </div>
       <div className="club-list">
         {clubList.map((club) => (
-          <div key={club.id} className="club-card">
+          <div 
+            key={club.id} 
+            className="club-card" 
+            onClick={() => navigate(`/clubR/${club.id}`)} // ClubR 페이지로 이동
+          >
             <img src={club.image} alt={club.title} className="club-image" />
             <div className="club-details">
               <h3>{club.description}</h3>

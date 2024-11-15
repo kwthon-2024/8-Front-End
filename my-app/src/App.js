@@ -16,6 +16,7 @@ import SignupPage from "./pages/Signup/signup";
 import ClubRegistrationPage from "./pages/ClubRegistrationPage/ClubRegistrationPage";
 import ClubDetailPage from "./pages/ClubDetailPage/ClubDetailPage";
 import ChatPage from "./pages/chat/chat"; // ChatPage import
+import ClubR from './pages/ClubR/ClubR'; // ClubR 페이지 import
 
 const Layout = ({ isAuthenticated }) => (
   <div className="page">
@@ -45,6 +46,7 @@ function App() {
         <Route path="/club-registration" element={isAuthenticated ? <ClubRegistrationPage /> : <Navigate to="/pages/login/login" replace />} />
         <Route path="/club/:id" element={isAuthenticated ? <ClubDetailPage /> : <Navigate to="/pages/login/login" replace />} />
         <Route path="/club/:id/chat" element={isAuthenticated ? <ChatPage /> : <Navigate to="/pages/login/login" replace />} /> {/* ChatPage route */}
+        <Route path="/clubR/:id" element={isAuthenticated ? <ClubR /> : <Navigate to="/pages/login/login" replace />} /> {/* ClubR route */}
         <Route path="*" element={<Navigate to="/pages/login/login" replace />} />
       </Route>
     </Routes>
