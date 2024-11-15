@@ -28,14 +28,14 @@ function SignupForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // 비밀번호와 비밀번호 확인이 일치하는지 확인
     if (formData.password !== formData.confirmPassword) {
       alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
       return;
     }
-
-    axios.post('http://localhost:8080/api/users/signup', formData)
+    console.log(formData);
+    axios.post('http://localhost:8086/api/users/signup', formData)
       .then(response => {
         alert("회원가입 성공!");
         setFormData({

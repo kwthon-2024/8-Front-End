@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 import './login.css';
-import logo from '../../assets/images/logo.png'; // 로고 이미지 경로
+import logo from '../../assets/images/logo.png';
 
 function LoginPage({ setIsAuthenticated }) {
     const [studentId, setStudentId] = useState('');
@@ -18,11 +19,31 @@ function LoginPage({ setIsAuthenticated }) {
         return () => clearTimeout(timer);
     }, []);
 
-    const handleLogin = () => {
-        // 간단한 로그인 로직 (학번과 비밀번호 입력 확인)
+    const handleLogin = async () => {
+
         if (studentId && password) {
-            setIsAuthenticated(true); // 로그인 상태 설정
-            navigate('/'); // 메인 페이지로 이동
+            try {
+                console.log(studentId, password)
+                // 백엔드 로그인 API 호출
+                const response = await axios.post('http://localhost:8086/api/auth/login', {
+                    studentId,
+                    password
+                });
+
+                // 로그인 성공 시
+                if (response.status === 200) {
+                    setIsAuthenticated(true); // 로그인 상태 설정
+                    navigate('/'); // 메인 페이지로 이동
+                }
+            } catch (error) {
+                // 로그인 실패 시 처리
+                if (error.response && error.response.status === 401) {
+                    alert('잘못된 학번 또는 비밀번호입니다.');
+                } else {
+                    console.error('로그인 오류:', error);
+                    alert('로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
+                }
+            }
         } else {
             alert('학번과 비밀번호를 입력하세요.');
         }
@@ -36,18 +57,18 @@ function LoginPage({ setIsAuthenticated }) {
             </div>
             {showLoginForm && (
                 <div className="login-form">
-                    <input 
-                        type="text" 
-                        placeholder="학번" 
-                        value={studentId} 
-                        onChange={(e) => setStudentId(e.target.value)} 
+                    <input
+                        type="text"
+                        placeholder="학번"
+                        value={studentId}
+                        onChange={(e) => setStudentId(e.target.value)}
                         className="input-field"
                     />
-                    <input 
-                        type="password" 
-                        placeholder="PASSWORD" 
-                        value={password} 
-                        onChange={(e) => setPassword(e.target.value)} 
+                    <input
+                        type="password"
+                        placeholder="PASSWORD"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         className="input-field"
                     />
                     <button onClick={handleLogin} className="login-button">Login</button>
