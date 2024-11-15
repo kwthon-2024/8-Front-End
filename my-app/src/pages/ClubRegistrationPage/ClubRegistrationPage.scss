@@ -1,0 +1,71 @@
+.club-registration-container {
+    padding: 20px;
+    font-family: 'Arial, sans-serif';
+    color: #4a1533; // 기본 텍스트 색상
+  
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #4a1533; // 헤더 하단 선
+  
+      h1 {
+        margin-left: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #4a1533; // 헤더 색상
+      }
+  
+      .back-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #4a1533; // 버튼 색상
+  
+        &:hover {
+          color: #736cbd; // 호버 시 색상
+        }
+      }
+    }
+  
+    .registration-form {
+      display: flex;
+      flex-direction: column;
+  
+      label {
+        margin-bottom: 15px;
+        font-size: 14px;
+        font-weight: bold;
+  
+        input {
+          width: 100%;
+          padding: 8px 0;
+          border: none;
+          border-bottom: 2px solid #4a1533;
+          outline: none;
+          font-size: 14px;
+  
+          &:focus {
+            border-bottom-color: #736cbd; // 포커스 시 밑줄 색상
+          }
+        }
+      }
+  
+      .submit-button {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #4a1533;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+  
+        &:hover {
+          background-color: #736cbd; // 호버 시 배경색 변경
+        }
+      }
+    }
+  }

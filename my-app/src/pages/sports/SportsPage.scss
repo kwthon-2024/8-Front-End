@@ -1,0 +1,65 @@
+.sports-page-container {
+    padding: 16px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sports-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  
+    .page-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4a1533;
+    }
+  
+    .back-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+  }
+  
+  .club-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 자동으로 적응하는 그리드 */
+    gap: 16px; /* 카드 간의 간격 */
+  }
+  
+  .club-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s;
+  
+    &:hover {
+      transform: translateY(-5px); /* 호버 시 카드가 살짝 올라가는 효과 */
+    }
+  
+    .club-image {
+      width: 100%;
+      height: auto;
+    }
+  
+    .club-details {
+      padding: 8px;
+  
+      h3 {
+        margin: 4px 0;
+        font-size: 16px;
+        font-weight: bold;
+        color: #4a1533;
+      }
+  
+      p {
+        font-size: 14px;
+        color: #4a1533;
+      }
+    }
+  }
