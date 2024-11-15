@@ -10,10 +10,12 @@ function ClubR() {
   const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState('');
+  const randomAuthors = ['김민수', '박지훈', '이영희', '최은정', '정호석']; // 임의의 작성자 목록
 
   const handleReviewSubmit = () => {
     if (newReview.trim()) {
-      setReviews([...reviews, newReview]);
+      const randomAuthor = randomAuthors[Math.floor(Math.random() * randomAuthors.length)]; // 임의의 작성자 선택
+      setReviews([...reviews, { content: newReview, author: randomAuthor }]);
       setNewReview('');
     }
   };
@@ -52,7 +54,9 @@ function ClubR() {
         <h2 className="section-title">리뷰</h2>
         <ul className="review-list">
           {reviews.map((review, index) => (
-            <li key={index} className="review-item">{review}</li>
+            <li key={index} className="review-item">
+              {review.content} - <em>{review.author}</em>
+            </li>
           ))}
         </ul>
         <div className="review-input-container">
