@@ -12,7 +12,9 @@ function SignupForm() {
     verificationCode: '',
     department: '',
     age: '',
-    email: ''
+    email: '',
+    password: '', // 비밀번호 필드 추가
+    confirmPassword: '' // 비밀번호 확인 필드 추가
   });
 
   const navigate = useNavigate(); // 페이지 이동을 위한 navigate 함수
@@ -26,6 +28,13 @@ function SignupForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // 비밀번호와 비밀번호 확인이 일치하는지 확인
+    if (formData.password !== formData.confirmPassword) {
+      alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+      return;
+    }
+
     axios.post('http://localhost:8080/api/users/signup', formData)
       .then(response => {
         alert("회원가입 성공!");
@@ -36,7 +45,9 @@ function SignupForm() {
           verificationCode: '',
           department: '',
           age: '',
-          email: ''
+          email: '',
+          password: '', // 폼 초기화 시 비밀번호도 초기화
+          confirmPassword: '' // 폼 초기화 시 비밀번호 확인도 초기화
         });
       })
       .catch(error => {
@@ -120,6 +131,26 @@ function SignupForm() {
             name="email"
             placeholder="이메일"
             value={formData.email}
+            onChange={handleChange}
+            className="input-field"
+          />
+        </label>
+        <label>
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            value={formData.password}
+            onChange={handleChange}
+            className="input-field"
+          />
+        </label>
+        <label>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="비밀번호 확인"
+            value={formData.confirmPassword}
             onChange={handleChange}
             className="input-field"
           />
