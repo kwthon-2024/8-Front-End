@@ -1,30 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
+import axios from 'axios';
 import './SportsPage.scss';
-import clubImage from '../../assets/images/club.jpg';
 
 function SportsPage() {
   const navigate = useNavigate();
+  const [clubList, setClubList] = useState([]); // 빈 배열로 초기화
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const clubList = [
-    {
-      id: 1,
-      title: 'ICEUNICORNS',
-      description: '아이스 하키부',
-      tagline: '"!?WHO IS NEXT!?"',
-      image: clubImage,
-      tags: ['모집중', '#중앙 동아리']
-    },
-    {
-      id: 2,
-      title: 'ICEUNICORNS',
-      description: '아이스 하키부',
-      tagline: '"!?WHO IS NEXT!?"',
-      image: clubImage,
-      tags: ['#중앙 동아리']
-    }
-  ];
+  useEffect(() => {
+    const fetchClubs = async () => {
+      try {
+        const response = await axios.get('http://localhost:8086/api/club?category=sports');
+        console.log(response.data);
+        setClubList(response.data || []); // 데이터가 없으면 빈 배열 설정
+        setLoading(false);
+        console.log(response.data);
+      } catch (err) {
+        console.error('클럽 정보를 가져오는 중 오류 발생:', err);
+        setError('클럽 정보를 불러올 수 없습니다. 다시 시도하세요.');
+        setLoading(false);
+      }
+    };
+
+    fetchClubs();
+  }, []);
+
+  if (loading) {
+    return <div className="sports-page-container">로딩 중...</div>;
+  }
+
+  if (error) {
+    return <div className="sports-page-container">{error}</div>;
+  }
 
   return (
     <div className="sports-page-container">
@@ -38,24 +48,27 @@ function SportsPage() {
       </div>
       <div className="line"></div>
       <div className="club-list">
-        {clubList.map((club) => (
-          <div 
-            key={club.id} 
-            className="club-card" 
-            onClick={() => navigate(`/clubR/${club.id}`)}
-          >
-            <div className="tags">
-              {club.tags.map((tag, index) => (
-                <span key={index} className="tag">{tag}</span>
-              ))}
+        {clubList.length > 0 ? (
+          clubList.map((club) => (
+            <div
+              key={club.id}
+              className="club-card"
+              onClick={() => navigate(`/clubR/${club.id}`)}
+            >
+              <div className="tags">
+                <span className="tag">{club.isRecruiting}</span>
+                <span className="tag">{club.category}</span>
+              </div>
+              <img src={club.imagePath || 'default-image-path.jpg'} alt={club.name} className="club-image" />
+              <div className="club-details">
+                <h3>{club.name}</h3>
+                <p>""</p>
+              </div>
             </div>
-            <img src={club.image} alt={club.title} className="club-image" />
-            <div className="club-details">
-              <h3>{club.description}</h3>
-              <p>{club.tagline}</p>
-            </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="no-clubs">등록된 클럽이 없습니다.</p>
+        )}
       </div>
     </div>
   );
