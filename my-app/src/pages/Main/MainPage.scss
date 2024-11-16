@@ -6,13 +6,12 @@
   .header {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* 헤더 아래 여백 조정 */
 
     .logo {
       width: 50px;
       height: 50px; /* 로고 크기 조정 */
       margin-right: 15px; /* 로고와 텍스트 사이의 간격 조정 */
-      display: flex;
+      margin-top: 10px;
       align-items: center; /* 로고를 수직 중앙 정렬 */
     }
 
@@ -27,13 +26,14 @@
   .divider {
     border: none;
     border-top: 2px solid #4a1533; /* 글자 색상과 동일한 선 색 */
-    margin: 5px 0; /* 구분선 위아래 여백 */
+    margin: 8px 0; /* 구분선 위아래 여백 조정 */
   }
 
   .section-title {
     font-size: 24px; /* 글자 크기 증가 */
     font-weight: bold;
     color: #4a1533; /* 원하는 색상으로 변경 */
+    margin-top: 20px; /* 제목을 약간 아래로 내리기 */
     margin-bottom: 20px;
   }
 

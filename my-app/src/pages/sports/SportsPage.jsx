@@ -14,6 +14,7 @@ function SportsPage() {
       description: '아이스 하키부',
       tagline: '"!?WHO IS NEXT!?"',
       image: clubImage,
+      tags: ['모집중', '#중앙 동아리']
     },
     {
       id: 2,
@@ -21,6 +22,7 @@ function SportsPage() {
       description: '아이스 하키부',
       tagline: '"!?WHO IS NEXT!?"',
       image: clubImage,
+      tags: ['#중앙 동아리']
     }
   ];
 
@@ -31,6 +33,7 @@ function SportsPage() {
           <IoIosArrowBack size={24} />
         </button>
         <h2 className="page-title">스포츠 분야</h2>
+        <div className="line"></div>
       </div>
       <div className="club-list">
         {clubList.map((club) => (
@@ -39,6 +42,11 @@ function SportsPage() {
             className="club-card" 
             onClick={() => navigate(`/clubR/${club.id}`)}
           >
+            <div className="tags">
+              {club.tags.map((tag, index) => (
+                <span key={index} className="tag">{tag}</span>
+              ))}
+            </div>
             <img src={club.image} alt={club.title} className="club-image" />
             <div className="club-details">
               <h3>{club.description}</h3>
