@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Outlet, Route, Routes, Navigate } from "react-router-dom";
 import "./App.scss";
 
-import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import MainPage from "./pages/Main/MainPage";
 import SportsPage from "./pages/sports/SportsPage";
@@ -20,7 +19,7 @@ import ClubR from './pages/ClubR/ClubR'; // ClubR 페이지 import
 
 const Layout = ({ isAuthenticated }) => (
   <div className="page">
-    <Header />
+    {/* <Header /> 삭제됨 */}
     <div className="wrap">
       <Outlet />
     </div>

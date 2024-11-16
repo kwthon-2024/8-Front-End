@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Link 컴포넌트 import
 import './MainPage.scss'; // 스타일 파일 import
+import logoImage from '../../assets/images/logo.png'; // 로고 이미지 import
 
 function MainPage() {
   const clubCategories = [
@@ -13,6 +14,11 @@ function MainPage() {
 
   return (
     <div className="main-container">
+      <div className="header">
+        <img src={logoImage} alt="로고" className="logo" />
+        <h1>동아리 커뮤니티</h1>
+      </div>
+      <hr className="divider" />
       <h2 className="section-title">동아리 목록</h2>
       <div className="club-list">
         {clubCategories.map((category, index) => (

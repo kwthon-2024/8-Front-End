@@ -75,8 +75,8 @@ function LoginPage({ setIsAuthenticated }) {
                     />
                     <button onClick={handleLogin} className="login-button">Login</button>
                     <div className="links">
-                        <Link to="/signup">회원가입</Link>
-                        <a href="/find-account">아이디/비번 찾기</a>
+                        <Link to="/signup"><b>회원가입</b></Link>
+                        <a href="/find-account"><b>아이디/비번 찾기</b></a>
                     </div>
                 </div>
             )}

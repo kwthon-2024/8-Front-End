@@ -1,10 +1,9 @@
 import {
-  faCamera,
-  faCircleUser,
-  faFaceGrinHearts,
   faHouse,
   faUsers,
-} from "@fortawesome/free-solid-svg-icons";
+  faCircleUser,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons"; // 필요한 아이콘만 import
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -13,32 +12,21 @@ import "./Navbar.scss";
 export default function Navbar() {
   const location = useLocation();
   const [showNavbar, setShowNavbar] = useState(true);
-  let lastScrollY = window.scrollY;
 
   // Navbar를 표시할 경로 목록
-  const allowedPaths = ["/", "/page1", "/page2", "/page3", "/page4", "/search"];
+  const allowedPaths = ["/", "/page2", "/page3", "/page4"];
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        // 아래로 스크롤하고 특정 위치 이상일 때 Navbar 숨김
-        setShowNavbar(false);
-      } else if (window.scrollY <= 100) {
-        // 페이지가 위로 스크롤되거나 특정 위치 이하일 때 Navbar 보임
-        setShowNavbar(true);
-      }
-      lastScrollY = window.scrollY;
-    };
+    // 현재 위치가 allowedPaths에 포함되면 showNavbar를 true로 설정
+    if (allowedPaths.includes(location.pathname)) {
+      setShowNavbar(true);
+    } else {
+      setShowNavbar(false);
+    }
+  }, [location.pathname]); // location.pathname이 변경될 때마다 실행
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // 현재 경로가 allowedPaths에 포함되지 않으면 null 반환
-  if (!allowedPaths.includes(location.pathname) || !showNavbar) {
-    return null;
+  if (!showNavbar) {
+    return null; // 하단바를 숨김
   }
 
   return (
@@ -46,55 +34,40 @@ export default function Navbar() {
       <div>
         <NavLink
           to="/"
-          className={({ isActive }) =>
-            isActive ? "nav-link active" : "nav-link"
-          }
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
         >
           <FontAwesomeIcon icon={faHouse} />
-        </NavLink>
-      </div>
-
-      <div>
-        <NavLink
-          to="/page1"
-          className={({ isActive }) =>
-            isActive ? "nav-link active" : "nav-link"
-          }
-        >
-          <FontAwesomeIcon icon={faCamera} />
+          {location.pathname === "/" && <div className="dot-indicator" />}
         </NavLink>
       </div>
 
       <div>
         <NavLink
           to="/page2"
-          className={({ isActive }) =>
-            isActive ? "nav-link active" : "nav-link"
-          }
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
         >
           <FontAwesomeIcon icon={faUsers} />
+          {location.pathname === "/page2" && <div className="dot-indicator" />}
         </NavLink>
       </div>
 
       <div>
         <NavLink
           to="/page3"
-          className={({ isActive }) =>
-            isActive ? "nav-link active" : "nav-link"
-          }
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
         >
-          <FontAwesomeIcon icon={faFaceGrinHearts} />
+          <FontAwesomeIcon icon={faCircleUser} /> {/* 내정보 아이콘 */}
+          {location.pathname === "/page3" && <div className="dot-indicator" />}
         </NavLink>
       </div>
 
       <div>
         <NavLink
           to="/page4"
-          className={({ isActive }) =>
-            isActive ? "nav-link active" : "nav-link"
-          }
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
         >
-          <FontAwesomeIcon icon={faCircleUser} />
+          <FontAwesomeIcon icon={faBars} /> {/* 메뉴 아이콘 */}
+          {location.pathname === "/page4" && <div className="dot-indicator" />}
         </NavLink>
       </div>
     </div>

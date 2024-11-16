@@ -8,10 +8,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 6vh;
-  background-color: #f8f9fa; /* 새로운 배경색 */
-  padding: 8px 0; /* 패딩 조정 */
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* 상단 그림자 */
+  height: 8vh; /* 높이를 조금 높임 */
+  background-color: #73200f; /* 배경색 */
+  padding: 10px 0; /* 패딩 조정 */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   min-width: 100vw;
   max-width: $max-width;
   margin-left: auto;
@@ -24,20 +24,31 @@
     align-items: center;
 
     .nav-link {
-      color: #7d7d7d; /* 새로운 기본 색상 */
-      font-size: 28px; /* 아이콘 크기 조정 */
-      font-weight: bold;
-      transition: color 0.3s, transform 0.3s; /* 색상 및 이동 효과 */
+      color: #ffffff;
+      font-size: 28px; /* 아이콘 크기 */
+      position: relative;
+      transition: color 0.3s, transform 0.3s;
 
       &:hover {
-        color: #4a1533; /* 호버 시 색상 */
-        transform: translateY(-3px); /* 호버 시 위로 이동 효과 */
+        color: #d1c4b2; /* 호버 시 색상 */
       }
-    }
 
-    .active {
-      color: #4a1533; /* 선택된 상태의 색상 */
-      border-bottom: 2px solid #4a1533; /* 선택된 아이콘 하단 표시 */
+      &.active {
+        color: transparent; /* 선택된 아이콘 보이지 않음 */
+
+        &::after {
+          content: "";
+          display: block;
+          width: 12px;
+          height: 12px;
+          background-color: #ffffff; /* 선택된 원의 색상 */
+          border-radius: 50%; /* 원형 */
+          position: absolute;
+          top: 50%; /* 아이콘의 중간에 위치 */
+          left: 50%; /* 아이콘의 중간에 위치 */
+          transform: translate(-50%, -50%); /* 정중앙으로 조정 */
+        }
+      }
     }
   }
 }

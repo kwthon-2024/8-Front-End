@@ -37,7 +37,7 @@ function SportsPage() {
           <div 
             key={club.id} 
             className="club-card" 
-            onClick={() => navigate(`/clubR/${club.id}`)} // ClubR 페이지로 이동
+            onClick={() => navigate(`/clubR/${club.id}`)}
           >
             <img src={club.image} alt={club.title} className="club-image" />
             <div className="club-details">
