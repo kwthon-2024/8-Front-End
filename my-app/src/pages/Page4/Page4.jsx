@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar'; // 하단 네비게이션 바 import
 import "./Page4.scss";
+import kwImage from '../../assets/images/kw.jpg';
 
 export default function Page4() {
   const settingsOptions = [
@@ -26,6 +27,9 @@ export default function Page4() {
             </div>
           </Link>
         ))}
+      </div>
+      <div className="settings-list">
+          <img src={kwImage} alt="kwimg" className="kw-img" />
       </div>
       <Navbar /> {/* 하단 네비게이션 바 */}
     </div>
