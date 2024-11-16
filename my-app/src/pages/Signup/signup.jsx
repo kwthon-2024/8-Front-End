@@ -41,8 +41,6 @@ function SignupForm() {
         setFormData({
           studentId: '',
           name: '',
-          phoneNumber: '',
-          verificationCode: '',
           department: '',
           age: '',
           email: '',
@@ -83,28 +81,7 @@ function SignupForm() {
             onChange={handleChange}
             className="input-field"
           />
-        </label>
-        <label className="phone-container">
-          <input
-            type="text"
-            name="phoneNumber"
-            placeholder="전화번호"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            className="input-field"
-          />
-          <button type="button" className="verify-button">인증</button>
-        </label>
-        <label>
-          <input
-            type="text"
-            name="verificationCode"
-            placeholder="전화번호 인증 번호"
-            value={formData.verificationCode}
-            onChange={handleChange}
-            className="input-field"
-          />
-        </label>
+        </label>  
         <label>
           <input
             type="text"
