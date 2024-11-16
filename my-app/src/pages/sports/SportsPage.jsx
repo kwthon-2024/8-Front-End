@@ -29,12 +29,14 @@ function SportsPage() {
   return (
     <div className="sports-page-container">
       <div className="sports-header">
-        <button onClick={() => navigate(-1)} className="back-button">
-          <IoIosArrowBack size={24} />
-        </button>
-        <h2 className="page-title">스포츠 분야</h2>
-        <div className="line"></div>
+        <h2 className="page-title">
+          <button onClick={() => navigate(-1)} className="back-button">
+            <IoIosArrowBack size={24} />
+          </button>
+          스포츠 분야
+        </h2>
       </div>
+      <div className="line"></div>
       <div className="club-list">
         {clubList.map((club) => (
           <div 

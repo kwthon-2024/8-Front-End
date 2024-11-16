@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IoIosArrowBack } from "react-icons/io"; // 뒤로가기 아이콘 import
 import { useNavigate } from 'react-router-dom';
 import './ClubR.scss';
-import logoImage from '../../assets/images/logo.png'; // 동아리 로고 이미지
+import logoImage from '../../assets/images/club.jpg'; // 동아리 로고 이미지
 import i1Image from '../../assets/images/i1.JPG'; // 활동 사진 1
 import i2Image from '../../assets/images/i2.png'; // 활동 사진 2
 

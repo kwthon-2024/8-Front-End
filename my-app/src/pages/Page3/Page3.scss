@@ -1,59 +1,127 @@
 .page3-container {
-    padding: 20px;
-    font-family: 'Arial, sans-serif';
+  padding: 20px;
+  font-family: 'Arial, sans-serif';
+  background-color: #f8f8f8; /* 페이지 배경색을 밝은 색으로 설정 */
+  min-height: 100vh; /* 화면 전체 영역을 차지하도록 설정 */
+
+  .page-title {
+    font-size: 32px;
+    font-weight: bold;
     color: #4a1533;
-  
-    .page-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 16px;
-    }
-  
-    .section-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-  
-    .personal-info-section, .affiliated-clubs-section, .pending-approval-section {
-      margin-bottom: 20px;
-  
-      .personal-info {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-  
-        .personal-icon {
-          width: 50px;
-          height: 50px;
-        }
-  
-        .personal-details {
-          p {
-            margin: 0;
-            font-size: 16px;
-          }
-        }
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* 섹션 제목 */
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a1533;
+    margin-bottom: 15px;
+  }
+
+  /* 개인정보 섹션 */
+  .personal-info-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+
+    .personal-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .personal-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #4a1533;
       }
-  
-      .club-card {
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        text-align: center;
-  
-        .club-image {
-          width: 100%;
-          height: auto;
-          border-radius: 10px;
-          margin-bottom: 10px;
-        }
-  
-        .club-name {
-          font-size: 16px;
-          font-weight: bold;
+
+      .personal-details {
+        p {
+          margin: 5px 0;
+          font-size: 18px;
+          color: #333;
         }
       }
     }
   }
+
+  /* 소속 동아리 섹션 */
+  .affiliated-clubs-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+
+    .club-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .club-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .club-name {
+        font-size: 18px;
+        color: #4a1533;
+      }
+    }
+  }
+
+  /* 가입 승인전 동아리 섹션 */
+  .pending-approval-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+
+    .club-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .club-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .club-name {
+        font-size: 18px;
+        color: #4a1533;
+      }
+    }
+  }
+}

@@ -1,54 +1,55 @@
 .page2-container {
-    padding: 20px;
-    font-family: 'Arial, sans-serif';
+  padding: 20px;
+  font-family: 'Arial, sans-serif';
+  background-color: #f7f7f7; /* 배경색을 연한 회색으로 변경 */
   
-    .custom-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #4a1533;
-      padding-bottom: 10px;
-  
-      .header-logo {
-        width: 40px;
-        height: 40px;
+  .custom-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4a1533;
+    padding-bottom: 10px;
+
+    .header-logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4a1533;
+    }
+  }
+
+  .club-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .club-card {
+      background-color: #ffffff; /* 카드 배경색은 흰색 유지 */
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       }
-  
-      h1 {
-        font-size: 24px;
-        font-weight: bold;
+
+      .club-image {
+        width: 100%;
+        height: auto;
+      }
+
+      .club-details {
+        padding: 12px;
+        font-size: 18px;
         color: #4a1533;
       }
     }
-  
-    .club-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-  
-      .club-card {
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.2s, box-shadow 0.2s;
-  
-        &:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-  
-        .club-image {
-          width: 100%;
-          height: auto;
-        }
-  
-        .club-details {
-          padding: 12px;
-          font-size: 18px;
-          color: #4a1533;
-        }
-      }
-    }
   }
+}

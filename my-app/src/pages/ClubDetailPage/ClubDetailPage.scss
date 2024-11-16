@@ -1,136 +1,176 @@
 .club-detail-container {
-    padding: 20px;
-    font-family: 'Arial, sans-serif';
-    color: #4a1533;
-  
-    // 링크 스타일 제거
-    a {
-      text-decoration: none;
-      color: inherit; // 부모 요소의 색상을 따름
-      &:hover {
-        color: inherit; // 호버 시에도 색상 유지
-      }
-    }
-  
-    .custom-header {
+  padding: 20px;
+  font-family: 'Arial, sans-serif';
+  color: #4a1533;
+  background-color: #fff; /* 전체 배경을 희색으로 변경 */
+  min-height: 100vh; /* 전체 영역을 차지하도록 설정 */
+}
+
+.custom-header {
+  display: flex;
+  align-items: center; /* 아이콘과 텍스트를 수직 중앙에 맞추기 */
+  justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
+  margin-bottom: 16px;
+  width: 100%;
+  position: relative; /* 헤더 내에서 절대적으로 위치할 수 있도록 설정 */
+}
+
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute; /* 절대 위치로 배치 */
+  left: 0; /* 헤더 왼쪽에 배치 */
+  margin-left: 0; /* left 속성으로 위치 설정하여 간격 제거 */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 아이콘과 텍스트 사이 간격 */
+
+  .header-logo {
+    width: 40px; /* 로고 크기 조정 */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 50px;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px; /* 버튼과 텍스트 간 겹침 방지 */
+  }
+}
+
+/* Add line below the header */
+.header-line {
+  width: 100%;
+  height: 2px;
+  background-color: #4a1533;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.announcement-section,
+.meeting-section {
+  margin-bottom: 20px;
+
+  .announcement-box {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Add spacing below the announcement section */
+  }
+
+  .meeting-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .meeting-info {
       display: flex;
       align-items: center;
-      margin-bottom: 16px;
-  
-      .back-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-right: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+
+      .meeting-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: contain; /* Ensure the image retains its original aspect ratio */
+        margin-right: 15px;
       }
-  
-      .header-content {
-        display: flex;
-        align-items: center;
-  
-        .header-logo {
-          width: 50px;
-          height: 50px; /* Ensure it's square */
-          border-radius: 50%; /* Make the logo circular */
-          object-fit: cover; /* Maintain aspect ratio */
-          margin-right: 10px;
+
+      .meeting-details {
+        flex: 1;
+        p {
+          margin: 5px 0;
+          font-size: 14px;
         }
-  
-        h1 {
-          font-size: 24px;
+        strong {
           font-weight: bold;
         }
       }
     }
-  
-    .section-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-  
-    .announcement-section,
-    .meeting-section {
-      margin-bottom: 20px;
-  
-      .announcement-box {
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-  
-      .meeting-card {
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-  
-        .meeting-info {
-          display: flex;
-          align-items: center;
-          margin-bottom: 10px;
-          width: 100%;
-  
-          .meeting-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%; /* Make the logo circular */
-            object-fit: cover; /* Maintain aspect ratio */
-            margin-right: 15px;
-          }
-  
-          .meeting-details {
-            flex: 1;
-            p {
-              margin: 5px 0;
-              font-size: 14px;
-            }
-            strong {
-              font-weight: bold;
-            }
-          }
-        }
-  
-        .attend-button {
-          width: 100%; /* Full width button */
-          background-color: #4a1533;
-          color: #fff;
-          border: none;
-          border-radius: 20px;
-          padding: 10px 20px;
-          cursor: pointer;
-          text-align: center;
-          transition: background-color 0.3s;
-  
-          &:hover {
-            background-color: #371029;
-          }
-        }
-      }
-    }
-  
-    .additional-links {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-  
-      .link-box {
-        background-color: #f9f9f9;
-        width: 45%;
-        border-radius: 10px;
-        padding: 15px;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        font-size: 16px;
-  
-        &:hover {
-          transform: translateY(-2px);
-        }
+
+    .attend-button {
+      width: 100%;
+      background-color: #4a1533;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #371029;
       }
     }
   }
+}
+
+.additional-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .link-box {
+    background-color: #f9f9f9;
+    width: 45%;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure that icons are displayed correctly */
+  .icon {
+    width: 40px; /* Adjust the icon size */
+    height: 40px;
+    margin-bottom: 8px; /* Ensure space between text and icon */
+    object-fit: contain; /* Prevents icon distortion */
+  }
+}
+
+/* Remove default anchor link styles */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit the color from parent element */
+}
+
+a:hover {
+  color: inherit; /* Ensure no color change on hover */
+}

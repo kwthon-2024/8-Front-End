@@ -4,6 +4,8 @@ import { useNavigate, Link } from 'react-router-dom'; // Add Link import
 import './ClubDetailPage.scss';
 import clubLogo from '../../assets/images/club.jpg'; // Main logo image
 import clubMeetingImage from '../../assets/images/club2.png'; // Image for the meeting
+import chatIcon from '../../assets/images/chat.png'; // Chat button icon
+import dateIcon from '../../assets/images/date.png'; // Date button icon
 
 function ClubDetailPage() {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ function ClubDetailPage() {
     <div className="club-detail-container">
       <div className="custom-header">
         <button onClick={() => navigate(-1)} className="back-button">
-          <IoIosArrowBack size={24} />
+          <IoIosArrowBack size={32} /> {/* Increased the size of the back icon */}
         </button>
         <div className="header-content">
           <img src={clubLogo} alt="Club Logo" className="header-logo" />
@@ -20,10 +22,13 @@ function ClubDetailPage() {
         </div>
       </div>
 
+
       <h2 className="section-title">공지사항</h2>
       <div className="announcement-section">
         <div className="announcement-box">
           <p>한양대 하키부 친선 경기가 예정되어 있습니다..</p>
+          <p>공지사항입니다...</p>
+          <p>공지사항입니다...</p>
         </div>
       </div>
 
@@ -45,10 +50,16 @@ function ClubDetailPage() {
 
       <div className="additional-links">
         <Link to="/club/:id/chat" className="link-box">
-          <p>채팅</p>
+          <div className="icon-container">
+            <img src={chatIcon} alt="Chat" className="icon" />
+            <p>채팅</p>
+          </div>
         </Link>
         <div className="link-box">
-          <p>일정</p>
+          <div className="icon-container">
+            <img src={dateIcon} alt="Date" className="icon" />
+            <p>일정</p>
+          </div>
         </div>
       </div>
     </div>
