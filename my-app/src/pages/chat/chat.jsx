@@ -1,17 +1,50 @@
-import React, { useState } from 'react';
-import './chat.scss';
-import { IoIosArrowBack } from "react-icons/io"; // Import for back button
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./chat.scss";
+import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 function Chat() {
   const navigate = useNavigate();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [chatLog, setChatLog] = useState([]);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const ws = new WebSocket("ws://localhost:8086/chat");
+
+    ws.onopen = () => {
+      console.log("WebSocket connection opened");
+    };
+
+    ws.onmessage = (event) => {
+      const newMessage = event.data;
+      setChatLog((prevMessages) => [...prevMessages, newMessage]);
+    };
+
+    ws.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket error: ", error);
+    };
+
+    setSocket(ws);
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, []);
 
   const handleSend = () => {
-    if (message.trim() !== '') {
-      setChatLog([...chatLog, message]);
-      setMessage('');
+    if (message.trim() !== "" && socket) {
+      const messageObj = {
+        sender: "김주현", // 수정 가능: 로그인된 사용자 이름으로 대체
+        content: message,
+      };
+      socket.send(JSON.stringify(messageObj));
+      setMessage("");
     }
   };
 
@@ -38,7 +71,9 @@ function Chat() {
           onChange={(e) => setMessage(e.target.value)}
           className="chat-input"
         />
-        <button onClick={handleSend} className="send-button">전송</button>
+        <button onClick={handleSend} className="send-button">
+          전송
+        </button>
       </div>
     </div>
   );

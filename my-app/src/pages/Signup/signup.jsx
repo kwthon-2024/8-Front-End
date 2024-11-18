@@ -34,7 +34,7 @@ function SignupForm() {
       alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
       return;
     }
-    console.log(formData);
+
     axios.post('http://localhost:8086/api/users/signup', formData)
       .then(response => {
         alert("회원가입 성공!");
@@ -47,6 +47,8 @@ function SignupForm() {
           password: '', // 폼 초기화 시 비밀번호도 초기화
           confirmPassword: '' // 폼 초기화 시 비밀번호 확인도 초기화
         });
+        // 회원가입 성공 후 로그인 페이지로 이동
+        navigate('/login');
       })
       .catch(error => {
         console.error("회원가입 실패:", error);
@@ -81,7 +83,7 @@ function SignupForm() {
             onChange={handleChange}
             className="input-field"
           />
-        </label>  
+        </label>
         <label>
           <input
             type="text"
