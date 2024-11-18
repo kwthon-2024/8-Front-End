@@ -65,3 +65,28 @@ html {
     min-width: $max-width;
   }
 }
+
+/* app.scss */
+
+/* 폰트 파일 불러오기 */
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('./fonts/Moneygraphy-Rounded.otf') format('otf');
+  font-weight: normal;
+  
+  font-style: normal;
+}
+
+/* 기본 스타일에 폰트 적용 */
+body {
+  font-family: 'MyCustomFont', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'MyCustomFont', sans-serif;
+  font-weight: bold;
+  color: #4a1533;
+}
